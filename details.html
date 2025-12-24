@@ -24,7 +24,6 @@
             z-index: 1;
         }
 
-        /* Layout para sa Screenshot Format */
         .product-hero {
             flex: 1;
             display: flex;
@@ -32,10 +31,9 @@
             justify-content: center;
             padding: 40px 20px;
             gap: 50px;
-            flex-wrap: wrap; /* Para mag-stack sa mobile */
+            flex-wrap: wrap;
         }
 
-        /* Glass Box para sa Image (Left Side) */
         .glass-image-box {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -51,7 +49,6 @@
             align-items: center;
         }
 
-        /* Golden Curves effect gaya ng sa screenshot */
         .glass-image-box::before, .glass-image-box::after {
             content: "";
             position: absolute;
@@ -73,7 +70,6 @@
             filter: drop-shadow(0 0 20px rgba(0,0,0,0.6));
         }
 
-        /* Info Container (Right Side) */
         .glass-info-box {
             background: rgba(0, 0, 0, 0.65);
             backdrop-filter: blur(15px);
@@ -93,12 +89,43 @@
             color: #fff;
         }
 
-        .glass-info-box .price {
-            font-size: 1.8rem;
+        /* --- PROMO & PRICE STYLES --- */
+        .price-container {
+            margin-bottom: 25px;
+        }
+
+        .original-price {
+            font-size: 1.2rem;
+            color: #bbb;
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+
+        .promo-tag {
+            background: #ff0000;
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            animation: vibrate-blink 0.3s infinite;
+        }
+
+        .discounted-price {
+            font-size: 2.2rem;
             color: #D4AF37;
             font-weight: bold;
             display: block;
-            margin-bottom: 25px;
+            margin-top: 5px;
+        }
+
+        @keyframes vibrate-blink {
+            0% { transform: translate(0); opacity: 1; }
+            25% { transform: translate(2px, -2px); opacity: 0.8; }
+            50% { transform: translate(-2px, 2px); opacity: 1; }
+            75% { transform: translate(2px, 2px); opacity: 0.8; }
+            100% { transform: translate(0); opacity: 1; }
         }
 
         .spec-section-title {
@@ -111,7 +138,6 @@
             text-transform: uppercase;
         }
 
-        /* Table-like list para sa specs */
         .spec-list { width: 100%; margin-bottom: 25px; }
         .spec-item { display: flex; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .spec-label { width: 130px; color: #bbb; font-size: 0.9rem; }
@@ -142,7 +168,6 @@
         }
         .messenger-btn:hover { background: #D4AF37; color: #000; }
 
-        /* Back to Collection Link */
         .back-nav {
             max-width: 1100px;
             margin: 20px auto 0;
@@ -182,25 +207,25 @@
         </div>
 
         <div class="product-hero">
-            
             <div class="glass-image-box">
                 <img id="wImg" src="" alt="Watch Image">
             </div>
 
             <div class="glass-info-box">
                 <h1 id="wName">Loading...</h1>
-                <span class="price" id="wPrice">₱ 0.00</span>
+                
+                <div class="price-container">
+                    <span class="original-price" id="oldPrice">₱ 0.00</span>
+                    <span class="promo-tag">20% OFF</span>
+                    <span class="discounted-price" id="wPrice">₱ 0.00</span>
+                </div>
                 
                 <div class="spec-section-title">Basic Information</div>
-                
-                <div id="specsContainer" class="spec-list">
-                    </div>
+                <div id="specsContainer" class="spec-list"></div>
 
                 <a id="wLink" href="#" target="_blank" class="official-link">🌐 View Full Official Specifications</a>
-                
                 <button class="messenger-btn" onclick="confirmOrder()">ORDER VIA MESSENGER</button>
             </div>
-
         </div>
 
         <footer>
@@ -209,67 +234,51 @@
     </div>
 
     <script>
-        // Database ng bawat relo
         const watchDatabase = {
             "CASIO MENS GOLD MTP B145G 9A": {
-                caseSize: "40 × 35 × 7.4 mm",
-                weight: "82 g",
-                material: "Gold Ion Plated Stainless Steel",
-                band: "Stainless Steel Band / One-touch 3-fold Clasp",
-                waterRes: "50-meter water resistance",
-                battery: "Approx. 3 years on SR621SW",
-                fullSpecs: "https://www.casio.com/ph/watches/casio/product.MTP-B145G-9AV/"
+                caseSize: "40 × 35 × 7.4 mm", weight: "82 g", material: "Gold Ion Plated Stainless Steel",
+                band: "Stainless Steel Band / One-touch 3-fold Clasp", waterRes: "50-meter water resistance",
+                battery: "Approx. 3 years on SR621SW", fullSpecs: "https://www.casio.com/ph/watches/casio/product.MTP-B145G-9AV/"
             },
             "CASIO MENS GOLD MTP VD03G 1A": {
-                caseSize: "48 × 41 × 9.6 mm",
-                weight: "106 g",
-                material: "Gold tone Case and Bezel",
-                band: "Stainless Steel Band / Triple-fold Clasp",
-                waterRes: "Water Resistant",
-                battery: "Approx. 3 years on SR626SW",
-                fullSpecs: "https://www.casio.com/ph/watches/casio/product.MTP-VD03G-1A/"
+                caseSize: "48 × 41 × 9.6 mm", weight: "106 g", material: "Gold tone Case and Bezel",
+                band: "Stainless Steel Band / Triple-fold Clasp", waterRes: "Water Resistant",
+                battery: "Approx. 3 years on SR626SW", fullSpecs: "https://www.casio.com/ph/watches/casio/product.MTP-VD03G-1A/"
             },
             "CASIO MENS GOLD MTP VD200G 1B": {
-                caseSize: "49 × 45 × 8.7 mm",
-                weight: "112 g",
-                material: "Gold tone Case and Bezel",
-                band: "Stainless Steel Band / Triple-fold Clasp",
-                waterRes: "Water Resistant",
-                battery: "Approx. 3 years on SR626SW",
-                fullSpecs: "https://www.casio.com/ph/watches/casio/product.MTP-VD200G-1B/"
+                caseSize: "49 × 45 × 8.7 mm", weight: "112 g", material: "Gold tone Case and Bezel",
+                band: "Stainless Steel Band / Triple-fold Clasp", waterRes: "Water Resistant",
+                battery: "Approx. 3 years on SR626SW", fullSpecs: "https://www.casio.com/ph/watches/casio/product.MTP-VD200G-1B/"
             },
             "CASIO MENS SILVER MTP VD01D 3E2": {
-                caseSize: "49 × 45 × 10.3 mm",
-                weight: "118 g",
-                material: "Silver tone Case and Bezel",
-                band: "Stainless Steel Band / Triple-fold Clasp",
-                waterRes: "Water Resistant",
-                battery: "Approx. 3 years on SR626SW",
-                fullSpecs: "https://www.casio.com/ph/watches/casio/product.MTP-VD01D-3E2V/"
+                caseSize: "49 × 45 × 10.3 mm", weight: "118 g", material: "Silver tone Case and Bezel",
+                band: "Stainless Steel Band / Triple-fold Clasp", waterRes: "Water Resistant",
+                battery: "Approx. 3 years on SR626SW", fullSpecs: "https://www.casio.com/ph/watches/casio/product.MTP-VD01D-3E2V/"
             },
             "CASIO MENS TWO TONE MTP VD300SG 1E": {
-                caseSize: "49 × 45 × 8.7 mm",
-                weight: "110 g",
-                material: "Two-tone Stainless Steel",
-                band: "Stainless Steel Band",
-                waterRes: "Water Resistant",
-                battery: "Approx. 3 years on SR626SW",
-                fullSpecs: "https://www.casio.com/ph/watches/casio/"
+                caseSize: "49 × 45 × 8.7 mm", weight: "110 g", material: "Two-tone Stainless Steel",
+                band: "Stainless Steel Band", waterRes: "Water Resistant",
+                battery: "Approx. 3 years on SR626SW", fullSpecs: "https://www.casio.com/ph/watches/casio/"
             }
         };
 
-        // Kunin ang URL Parameters
         const params = new URLSearchParams(window.location.search);
         const name = params.get('name');
-        const price = params.get('price');
+        const priceString = params.get('price');
         const imgPath = params.get('img');
         
-        // I-set ang Basic UI
+        // --- MATH FOR DISCOUNT ---
+        // Alisin ang characters na hindi numero para makapag-compute
+        const rawPrice = parseFloat(priceString.replace(/[^\d.]/g, '')) || 0;
+        const discount = 0.20; // 20%
+        const finalPrice = rawPrice * (1 - discount);
+
         document.getElementById('wName').innerText = name || "Watch Model";
-        document.getElementById('wPrice').innerText = price ? "₱ " + price : "₱ 0.00";
+        document.getElementById('oldPrice').innerText = "₱ " + rawPrice.toLocaleString();
+        document.getElementById('wPrice').innerText = "₱ " + finalPrice.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        
         if(imgPath) document.getElementById('wImg').src = imgPath;
 
-        // I-render ang Specifications base sa Database
         const specsList = document.getElementById('specsContainer');
         const data = watchDatabase[name];
 
@@ -285,11 +294,10 @@
             document.getElementById('wLink').href = data.fullSpecs;
         }
 
-        // Messenger Link Function
         function confirmOrder() {
             const productName = document.getElementById('wName').innerText;
             const fbPage = "DMZWatchTime"; 
-            const msg = encodeURIComponent("Hi! I'm interested in buying: " + productName);
+            const msg = encodeURIComponent("Hi! I'm interested in buying: " + productName + " at the promo price!");
             window.open("https://m.me/" + fbPage + "?text=" + msg);
         }
     </script>
