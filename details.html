@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details | DMZ Time Watch</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dmzsuppplies.github.io/dmz-time-watch/">
+    <meta property="og:title" content="DMZ Watch Time | Luxury Watch Store">
+    <meta property="og:description" content="Discover elegance and precision in our 2026 luxury watch collection.">
+    <meta property="og:image" content="https://dmzsuppplies.github.io/dmz-time-watch/dmz-time-watch.png">
+
     <link rel="stylesheet" href="style.css">
     <style>
         /* Eksklusibong disenyo para sa Details Page */
@@ -158,14 +165,16 @@
 
     <div class="video-bg">
         <video autoplay muted loop playsinline>
-            <source src="images/BG.mp4" type="video/mp4">
+            <source src="BG.mp4" type="video/mp4">
         </video>
     </div>
 
     <div class="details-wrapper">
         <header>
-            <h1>DMZ TIME WATCH</h1>
-            <p>Premium Watch Collection</p>
+            <div class="brand-logo">
+                <h1>DMZ TIME WATCH</h1>
+                <p>PREMIUM WATCH COLLECTION</p>
+            </div>
         </header>
 
         <div class="back-nav">
@@ -228,7 +237,7 @@
                 waterRes: "Water Resistant",
                 battery: "Approx. 3 years on SR626SW",
                 fullSpecs: "https://www.casio.com/ph/watches/casio/product.MTP-VD200G-1B/"
-			},
+            },
             "CASIO MENS SILVER MTP VD01D 3E2": {
                 caseSize: "49 × 45 × 10.3 mm",
                 weight: "118 g",
@@ -237,15 +246,15 @@
                 waterRes: "Water Resistant",
                 battery: "Approx. 3 years on SR626SW",
                 fullSpecs: "https://www.casio.com/ph/watches/casio/product.MTP-VD01D-3E2V/"
-			},
+            },
             "CASIO MENS TWO TONE MTP VD300SG 1E": {
                 caseSize: "49 × 45 × 8.7 mm",
                 weight: "110 g",
-                material: "Gold Ion Plated Stainless Steel",
-                band: "Stainless Steel Band / Triple-fold Clasp",
+                material: "Two-tone Stainless Steel",
+                band: "Stainless Steel Band",
                 waterRes: "Water Resistant",
                 battery: "Approx. 3 years on SR626SW",
-                fullSpecs: "https://www.casio.com/ph/watches/casio/product.MTP-VD300SG-1E/"
+                fullSpecs: "https://www.casio.com/ph/watches/casio/"
             }
         };
 
@@ -279,7 +288,7 @@
         // Messenger Link Function
         function confirmOrder() {
             const productName = document.getElementById('wName').innerText;
-            const fbPage = "DMZWatchTime"; // Palitan mo ito ng totoong FB page username mo
+            const fbPage = "DMZWatchTime"; 
             const msg = encodeURIComponent("Hi! I'm interested in buying: " + productName);
             window.open("https://m.me/" + fbPage + "?text=" + msg);
         }
