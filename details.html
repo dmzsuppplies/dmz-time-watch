@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details | DMZ Time Watch</title>
-    
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dmzsuppplies.github.io/dmz-time-watch/">
     <meta property="og:title" content="DMZ Watch Time | Luxury Watch Store">
     <meta property="og:description" content="Shop authentic watches with exclusive discounts.">
     <meta property="og:image" content="https://dmzsuppplies.github.io/dmz-time-watch/dmz-time-watch.png">
-
     <link rel="stylesheet" href="style.css">
     <style>
         body, html { height: 100%; margin: 0; }
@@ -29,7 +27,6 @@
         .spec-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .spec-key { color: #aaa; font-size: 0.9rem; }
         .spec-val { color: #fff; font-size: 0.9rem; font-weight: bold; }
-        
         /* FULL SPECS LINK STYLE */
         .official-link { color: #D4AF37; text-decoration: none; font-size: 0.85rem; margin-top: 15px; display: inline-block; border-bottom: 1px dotted #D4AF37; transition: 0.3s; }
         .official-link:hover { color: #fff; border-bottom-color: #fff; }
@@ -43,7 +40,6 @@
     <div class="video-bg">
         <video autoplay muted loop playsinline><source src="BG.mp4" type="video/mp4"></video>
     </div>
-
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -56,7 +52,6 @@
             </ul>
         </div>
     </nav>
-
     <div class="details-container">
         <div class="glass-panel">
             <div class="image-section"><img id="wImg" src="" alt="Watch Image"></div>
@@ -68,15 +63,12 @@
                     <span class="discount-label" id="promoPercent">0% OFF</span>
                     <span class="new-price" id="wPrice">₱ 0.00</span>
                 </div>
-                <div id="specsContainer" class="specs-grid"></div>
-                
-                <a id="wLink" href="#" target="_blank" class="official-link">🌐 View Full Official Specifications</a>
-                
+                <div id="specsContainer" class="specs-grid"></div>   
+                <a id="wLink" href="#" target="_blank" class="official-link">🌐 View Full Official Specifications</a>          
                 <button class="order-btn" onclick="confirmOrder()">ORDER VIA MESSENGER</button>
             </div>
         </div>
     </div>
-
     <script>
         const watchDatabase = {
             "CASIO MENS GOLD MTP B145G 9A": { movement: "Analog", case: "40 × 35 × 7.4 mm", material: "Gold Ion Plated", water: "50-meter", battery: "SR621SW", fullSpecs: "https://www.casio.com/ph/watches/casio/product.MTP-B145G-9AV/" },
@@ -86,21 +78,17 @@
             "CASIO MENS TWO TONE MTP VD300SG 1E": { movement: "Analog", case: "49 × 45 × 8.7 mm", material: "Two-tone Steel", water: "Water Resistant", battery: "SR626SW", fullSpecs: "https://www.casio.com/ph/watches/casio/" },
             "SEIKO MENS GOLD SNKK20K1": { movement: "Automatic (7S26)", case: "38mm Diameter", material: "Gold-Plated", water: "30m", battery: "Kinetic", fullSpecs: "https://www.watchportal.com.ph/products/seiko-snkk20k1" }
         };
-
         const params = new URLSearchParams(window.location.search);
         const name = params.get('name');
         const priceString = params.get('price') || "0";
         const discountRate = parseFloat(params.get('discount')) || 20; 
-
         const rawPrice = parseFloat(priceString.replace(/[^\d.]/g, '')) || 0;
         const finalPrice = rawPrice * ((100 - discountRate) / 100);
-
         document.getElementById('wName').innerText = name || "Watch Model";
         document.getElementById('oldPrice').innerText = "₱ " + rawPrice.toLocaleString();
         document.getElementById('promoPercent').innerText = discountRate + "% OFF";
         document.getElementById('wPrice').innerText = "₱ " + finalPrice.toLocaleString(undefined, {minimumFractionDigits: 2});
         document.getElementById('wImg').src = params.get('img');
-
         const data = watchDatabase[name];
         if (data) {
             document.getElementById('specsContainer').innerHTML = `
@@ -113,7 +101,6 @@
             // SET THE OFFICIAL LINK
             document.getElementById('wLink').href = data.fullSpecs;
         }
-
         function confirmOrder() {
             window.open("https://m.me/DMZWatchTime?text=" + encodeURIComponent("Order Interest: " + name + " (₱" + finalPrice.toLocaleString() + ")"));
         }
