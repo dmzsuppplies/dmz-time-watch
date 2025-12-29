@@ -865,6 +865,7 @@ const watchInventory = [
         fullSpecs: "https://www.watchportal.com.ph/products/casio-mtp-1303d-7avdf-silver-stainless-steel-strap-watch-for-men"
     },
 	{
+	brand: "SEIKO",
     name: "SEIKO MENS SPORTS SSK023K1",
     model: "SSK023K1",
     price: 20000,
@@ -878,3 +879,4 @@ const watchInventory = [
     fullSpecs: "https://shop.seikoboutique.com.ph/products/seiko-5-sports-ssk023k1"
 	}
 ];
+
