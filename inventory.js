@@ -1101,19 +1101,6 @@ const watchInventory = [
     },
     {
         brand: "SEIKO",
-        name: "SEIKO 5 SPORTS SRPL89K1 AUTOMATIC",
-        price: 22250,
-        discount: 5,
-        img: "SRPL89K1.png",
-        movement: "Automatic (4R36)",
-        caseSize: "42.5 mm",
-        material: "Stainless Steel",
-        waterRes: "100-meter",
-        battery: "None (Self-winding)",
-        fullSpecs: "https://shop.seikoboutique.com.ph/products/seiko-5-sports-srpl89k1"
-    },
-    {
-        brand: "SEIKO",
         name: "SEIKO 5 SPORTS SRPD61K1 AUTOMATIC GREEN",
         price: 16779.00,
         discount: 10,
@@ -1465,3 +1452,4 @@ const watchInventory = [
     }
 
 ];
+
