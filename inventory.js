@@ -1370,7 +1370,7 @@ const watchInventory = [
         brand: "CITIZEN",
         name: "CITIZEN MENS SILVER NJ0180-80Z",
         price: 26799,
-        discount: 5,
+        discount: 0,
         img: "NJ0180-80Z.png",
 		img2: "NJ0180-80Z-2.png",
         movement: "Automatic",
@@ -1452,4 +1452,5 @@ const watchInventory = [
     }
 
 ];
+
 
